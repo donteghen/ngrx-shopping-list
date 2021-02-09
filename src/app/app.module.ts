@@ -2,13 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { ShoppingReducer } from './store/reducers/shopping.reducer';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, StoreModule.forRoot({shopping:ShoppingReducer}), 
+    FormsModule, CommonModule,
+     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
