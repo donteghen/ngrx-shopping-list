@@ -1,5 +1,5 @@
-import { ShoppingItem } from "src/app/models/shopping-item";
+import { ShoppingState } from "../reducers/shopping.reducer";
 
 export interface AppState {
-    readonly shopping: Array<ShoppingItem>
+    readonly shopping: ShoppingState;
   }

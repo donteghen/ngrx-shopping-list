@@ -13,11 +13,15 @@ import { AddItemAction, DeleteItemAction } from './store/actions/shopping.action
 })
 export class AppComponent implements OnInit{
   shoppingItems : Observable<Array<ShoppingItem>>;
+  loading$: Observable<Boolean>;
+  error$: Observable<Error>
   newShoppingItem : ShoppingItem = {id: '', name: ''};
   constructor(private store : Store<AppState>){}
 
   ngOnInit(){
-    this.shoppingItems = this.store.select(state => state.shopping);
+    this.shoppingItems = this.store.select(state => state.shopping.list);
+    this.loading$ = this.store.select(state => state.shopping.loading);
+    this.error$ = this.store.select(state => state.shopping.error);
   }
 
   addItem(){
